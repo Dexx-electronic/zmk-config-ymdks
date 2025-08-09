@@ -1,0 +1,5 @@
+if SHIELD_YMDKS
+
+config ZMK_KEYBOARD_NAME
+default "ymdks"
+endif
