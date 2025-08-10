@@ -7,7 +7,7 @@
 
 	chosen {
 		zmk,kscan = &kscan_split_matrix;
-		zmk,matrix_transofrm = &default_transform;
+		zmk,matrix_transform = &default_transform;
 	};
 
 	kscan_split_matrix: kscan_split_matrix {
