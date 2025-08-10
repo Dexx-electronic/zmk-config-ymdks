@@ -19,14 +19,25 @@
 //        };
 //    };
 
+   chosen {
+	   zmk,kscan = &kscan_split_matrix;
+	   zmk,matrix_transofrm = &default_transform;
+   };
+
     // --- ZMK Keyboard Scan Nodes ---
     // This node defines the matrix for the nice!nano (left half).
     kscan_split_matrix: kscan_split_matrix {
         compatible = "zmk,kscan-split-matrix";
+	label = "kscan_split_matrix";
         rows = <&gpio1 11>, <&gpio1 13>, <&gpio1 15>, <&gpio0 2>, <&gpio0 29>, <&gpio0 19>;
         cols = <&gpio0 8>, <&gpio0 6>, <&gpio0 22>, <&gpio0 24>, <&gpio1 0>, <&gpio0 11>, <&gpio1 4>;
         diode-direction = "col2row";
+    };
 
+    default_transform: matrix_transform {
+	    compatible = "zmk,matrix-transform";
+	    rows = <6>;
+	    columns = <7>;
         // Explicit matrix-transform with a map for the left half (6 rows, 7 columns).
         matrix-transform = <
             RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6)
