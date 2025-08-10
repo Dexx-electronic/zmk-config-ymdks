@@ -5,19 +5,19 @@
 
 / {
     // Defines the I2C bus and the MCP23018 expander
-    &i2c_2 {
-        compatible = "nordic,nrf-i2c";
-        sda-pin = <26>;
-        scl-pin = <27>;
-        status = "okay";
-
-        mcp23018: mcp23018@20 {
-            compatible = "microchip,mcp23018";
-            reg = <0x20>; // I2C address of your MCP23018
-            #gpio-cells = <2>;
-            gpio-controller;
-        };
-    };
+//    &i2c_2 {
+//        compatible = "nordic,nrf-i2c";
+//        sda-pin = <20>;
+//        scl-pin = <17>;
+//        status = "okay";
+//
+//        mcp23018: mcp23018@20 {
+//            compatible = "microchip,mcp23018";
+//            reg = <0x20>; // I2C address of your MCP23018
+//            #gpio-cells = <2>;
+//            gpio-controller;
+//        };
+//    };
 
     // --- ZMK Keyboard Scan Nodes ---
     // This node defines the matrix for the nice!nano (left half).
@@ -25,7 +25,7 @@
         compatible = "zmk,kscan-split-matrix";
         rows = <&gpio1 11>, <&gpio1 13>, <&gpio1 15>, <&gpio0 2>, <&gpio0 29>, <&gpio0 19>;
         cols = <&gpio0 8>, <&gpio0 6>, <&gpio0 22>, <&gpio0 24>, <&gpio1 0>, <&gpio0 11>, <&gpio1 4>;
-        diode-direction = "row2col";
+        diode-direction = "col2row";
 
         // Explicit matrix-transform with a map for the left half (6 rows, 7 columns).
         matrix-transform = <
@@ -39,35 +39,35 @@
     };
 
     // This node defines the matrix for the MCP23018 (right half).
-    kscan_i2c_ext_matrix: kscan_i2c_ext_matrix {
-        compatible = "zmk,kscan-i2c-ext-matrix";
-        i2c = <&i2c_2>;
-
-        // Row GPIOs from the MCP23018 GPA pins
-        row-gpios = <&mcp23018 0 (GPIO_PULL_UP)>,
-                    <&mcp23018 1 (GPIO_PULL_UP)>,
-                    <&mcp23018 2 (GPIO_PULL_UP)>,
-                    <&mcp23018 3 (GPIO_PULL_UP)>,
-                    <&mcp23018 4 (GPIO_PULL_UP)>,
-                    <&mcp23018 5 (GPIO_PULL_UP)>;
-
-        // Column GPIOs from the MCP23018 GPB pins
-        col-gpios = <&mcp23018 8>,
-                    <&mcp23018 9>,
-                    <&mcp23018 10>,
-                    <&mcp23018 11>,
-                    <&mcp23018 12>,
-                    <&mcp23018 13>,
-                    <&mcp23018 14>;
-        
-        // Explicit matrix-transform with a map for the right half (6 rows, 7 columns).
-        matrix-transform = <
-            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6)
-            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6)
-            RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6)
-            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6)
-            RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) RC(4,6)
-            RC(5,0) RC(5,1) RC(5,2) RC(5,3) RC(5,4) RC(5,5) RC(5,6)
-        >;
-    };
+//    kscan_i2c_ext_matrix: kscan_i2c_ext_matrix {
+//        compatible = "zmk,kscan-i2c-ext-matrix";
+//        i2c = <&i2c_2>;
+//
+//        // Row GPIOs from the MCP23018 GPA pins
+//        row-gpios = <&mcp23018 0 (GPIO_PULL_UP)>,
+//                    <&mcp23018 1 (GPIO_PULL_UP)>,
+//                    <&mcp23018 2 (GPIO_PULL_UP)>,
+//                    <&mcp23018 3 (GPIO_PULL_UP)>,
+//                    <&mcp23018 4 (GPIO_PULL_UP)>,
+//                    <&mcp23018 5 (GPIO_PULL_UP)>;
+//
+//        // Column GPIOs from the MCP23018 GPB pins
+//        col-gpios = <&mcp23018 8>,
+//                    <&mcp23018 9>,
+//                    <&mcp23018 10>,
+//                    <&mcp23018 11>,
+//                    <&mcp23018 12>,
+//                    <&mcp23018 13>,
+//                    <&mcp23018 14>;
+//        
+//        // Explicit matrix-transform with a map for the right half (6 rows, 7 columns).
+//        matrix-transform = <
+//            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6)
+//            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6)
+//            RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6)
+//            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6)
+//            RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) RC(4,6)
+//            RC(5,0) RC(5,1) RC(5,2) RC(5,3) RC(5,4) RC(5,5) RC(5,6)
+//        >;
+//    };
 };
