@@ -51,6 +51,7 @@
 
 	my_layout: physical_layout {
 		compatible = "zmk,physical-layout";
+		display-name = "YMDKS 6x7 Layout";
 
 		layout = <
 			0 0 0
