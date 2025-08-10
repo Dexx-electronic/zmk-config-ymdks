@@ -8,19 +8,18 @@
 
         default_layer {
             bindings = <
-                &kp ESC &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6
-                &kp GRAVE &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6
-                &kp TAB &kp Q &kp W &kp E &kp R &kp T &none
-                &kp CAPS &kp A &kp S &kp D &kp F &kp G &none
-                &kp LSFT &kp Z &kp X &kp C &kp V &kp B &none
-                &kp LCTL &kp LGUI &kp LALT &kp SPACE &none &none &none
+                &kp ESC   &kp F1   &kp F2   &kp F3    &kp F4 &kp F5  &kp F6
+                &kp GRAVE &kp N1   &kp N2   &kp N3    &kp N4 &kp N5  &kp N6
+                &kp TAB   &kp Q    &kp W    &kp E     &kp R  &kp T   &none
+                &kp CAPS  &kp A    &kp S    &kp D     &kp F  &kp G   &none
+                &kp LSFT  &kp Z    &kp X    &kp C     &kp V  &kp B   &none
+                &kp LCTL  &kp LGUI &kp LALT &kp SPACE &mo 1  &none   &none
             >;
 	};
-	            // Assign a name to your new layer.
-        // It's helpful to give it a descriptive name like "bluetooth_layer"
-        bluetooth_layer {
+
+	bluetooth_layer {
             bindings = <
-                &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none
+                &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none    &none       &none
                 &trans      &trans      &trans      &trans      &trans      &trans      &trans
                 &trans      &trans      &trans      &trans      &trans      &trans      &trans
                 &trans      &trans      &trans      &trans      &trans      &trans      &trans
@@ -29,4 +28,4 @@
             >;
         };
     };
-}
+};
